@@ -5,9 +5,11 @@ const { Schema } = mongoose;
 const spotUserSchema = new Schema({
   userName: {
     type: String,
+    required: true,
   },
   userMobile: {
     type: String,
+    required: true,
   },
   longitude: {
     type: String,
