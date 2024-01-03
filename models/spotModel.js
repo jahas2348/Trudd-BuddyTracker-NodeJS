@@ -6,9 +6,12 @@ const SpotUserModel = require('./spotUserModel');
 const spotSchema = new Schema({
   leaderName: {
     type: String,
+    required: true,
+
   },
   leaderMobile: {
     type: String,
+    required: true,
   },
   
   spotId: {
