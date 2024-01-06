@@ -13,4 +13,7 @@ router.post('/api/leader/createspot',leaderController.createSpot);
 // Edit Spot
 router.put('/api/leader/editspot/:id', leaderController.editSpot);
 
+//Delete Spot
+router.delete('api/leader/deletespot', leaderController.deleteSpot);
+
 module.exports = router;

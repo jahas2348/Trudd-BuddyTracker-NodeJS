@@ -73,6 +73,29 @@ const editSpot = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+// Delete Spot
+const deleteSpot = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find and remove the spot based on _id
+    const deletedSpot = await SpotModel.findByIdAndRemove(id);
+
+    if (!deletedSpot) {
+      return res.status(404).json({ status: 'error', message: 'Spot not found' });
+    }
+
+    res.json({
+      status: 'success',
+      message: 'Spot deleted successfully',
+      spotId: deletedSpot.spotId,
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 
-module.exports = { createSpot, editSpot };
+
+module.exports = { createSpot, editSpot, deleteSpot };
