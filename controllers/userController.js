@@ -28,10 +28,20 @@ const joinSpot = async (req, res) => {
     // Save the updated spot
     await spot.save();
 
+    // Include spot details in the response
+    const spotDetails = {
+      leaderName: spot.leaderName,
+      leaderMobile: spot.leaderMobile,
+      spotInstructions: spot.spotInstructions,
+      latitude: spot.latitude,
+      longitude: spot.longitude,
+    };
+
     res.json({
       status: 'success',
       message: 'Joined Spot Successfully',
       user: newSpotUser,
+      spotDetails: spotDetails,
     });
   } catch (error) {
     console.error(error.message);
