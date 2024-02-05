@@ -35,12 +35,13 @@ const DataSchema = new mongoose.Schema({
   name: String,
   latitude: Number,
   longitude: Number,
+  userId : String,
 });
 const DataModel = mongoose.model('Data', DataSchema);
 app.post('/add', async (req, res) => {
   try {
-    const { name, latitude, longitude } = req.body;
-    const newData = new DataModel({ name, latitude, longitude });
+    const { name, latitude, longitude, userId } = req.body;
+    const newData = new DataModel({ name, latitude, longitude, userId });
     await newData.save();
     res.status(200).send(newData);
     broadcast(newData.toObject());

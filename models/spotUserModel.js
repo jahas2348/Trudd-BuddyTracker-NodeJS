@@ -21,6 +21,7 @@ const spotUserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  
 });
 
 const SpotUserModel = db.model('spotUser', spotUserSchema);
