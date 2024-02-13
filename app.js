@@ -75,10 +75,10 @@ app.put('/edit/:id', async (req, res) => {
       console.log('Data not found for update');
       return res.status(404).send({ error: 'Data not found' });
     }
-
+    broadcast(updatedData.toObject());
     console.log('Data updated successfully:', updatedData);
     res.status(200).send(updatedData.toObject());
-    broadcast(updatedData.toObject());
+   
   } catch (error) {
     console.error('Error updating data:', error);
     res.status(500).send(error);
