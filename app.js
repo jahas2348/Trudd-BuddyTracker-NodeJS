@@ -36,6 +36,7 @@ const DataSchema = new mongoose.Schema({
   latitude: Number,
   longitude: Number,
   userId : String,
+  
 });
 const DataModel = mongoose.model('Data', DataSchema);
 app.post('/add', async (req, res) => {

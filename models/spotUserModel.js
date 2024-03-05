@@ -21,6 +21,10 @@ const spotUserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  }
   
 });
 
