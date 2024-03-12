@@ -105,7 +105,7 @@ server.on('upgrade', (request, socket, head) => {
 });
 
 
-cron.schedule('*/1 * * * *', () => {
+cron.schedule('*/10 * * * *', () => {
   console.log('Pinging server to keep it alive...');
   // Use the https module to handle HTTPS requests
   https.get('https://trudd-server.onrender.com/', (res) => {
