@@ -105,14 +105,30 @@ server.on('upgrade', (request, socket, head) => {
 });
 
 
+
 cron.schedule('*/10 * * * *', () => {
   console.log('Pinging server to keep it alive...');
-  // Use the https module to handle HTTPS requests
-  https.get('https://trudd-server.onrender.com/', (res) => {
+  
+  const options = {
+    hostname: 'trudd-server.onrender.com',
+    method: 'GET',
+    timeout: 60000 // Timeout set to 60 seconds
+  };
+
+  const req = https.request(options, (res) => {
     console.log(`Ping response: ${res.statusCode}`);
-  }).on('error', (err) => {
+  });
+
+  req.on('timeout', () => {
+    req.abort();
+    console.error('Request timed out');
+  });
+
+  req.on('error', (err) => {
     console.error('Ping error:', err.message);
   });
+
+  req.end();
 });
 
 module.exports = server;
