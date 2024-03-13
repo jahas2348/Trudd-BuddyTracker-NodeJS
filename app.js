@@ -105,6 +105,7 @@ server.on('upgrade', (request, socket, head) => {
 });
 
 
+const https = require('https');
 
 cron.schedule('*/10 * * * *', () => {
   console.log('Pinging server to keep it alive...');
