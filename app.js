@@ -107,11 +107,11 @@ server.on('upgrade', (request, socket, head) => {
 
 const https = require('https');
 
-cron.schedule('*/10 * * * *', () => {
+cron.schedule('*/14 * * * *', () => {
   console.log('Pinging server to keep it alive...');
   
   const options = {
-    hostname: 'trudd-server.onrender.com',
+    hostname: 'trudd-server-pvvv.onrender.com',
     method: 'GET',
     timeout: 60000 // Timeout set to 60 seconds
   };
